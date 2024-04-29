@@ -9,16 +9,16 @@ terraform {
   required_version = "~> 1.6"
 }
 
-variable "availability_zone" {
-  type    = string
-  default = "us-east-2"
-}
-
-variable "os" {
-  type    = string
-  default = "rhel7"
-}
-
 provider "aws" {
-  region = var.availability_zone
+  region = var.aws_region
+}
+
+resource "aws_instance" "rhel_instance" {
+  ami           = data.aws_ami.redhat-linux.id
+  instance_type = var.instance_type
+  key_name = var.keypair_name
+  tags = {
+    created_by = data.aws_caller_identity.current.arn
+    ticket_num = var.ticket_num
+  }
 }

@@ -3,29 +3,28 @@
 #            "OwnerId": "309956199498",
 #            "ImageOwnerAlias": "amazon",
 
-data "aws_ami" "redhat-linux-7" {
+data "aws_ami" "redhat-linux" {
   most_recent = true
   owners      = ["309956199498"]
   filter {
     name   = "name"
-    values = ["RHEL-7.*"]
+    values = ["RHEL-${var.rhel_version}.*"]
   }
 }
 
-data "aws_ami" "redhat-linux-8" {
-  most_recent = true
-  owners      = ["309956199498"]
-  filter {
-    name   = "name"
-    values = ["RHEL-8.*"]
-  }
+
+
+# this is probably an apply time data source, which is not ideal
+data "aws_caller_identity" "current" {}
+
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
 }
 
-data "aws_ami" "redhat-linux-9" {
-  most_recent = true
-  owners      = ["309956199498"]
-  filter {
-    name   = "name"
-    values = ["RHEL-9.*"]
-  }
+output "caller_arn" {
+  value = data.aws_caller_identity.current.arn
+}
+
+output "caller_user" {
+  value = data.aws_caller_identity.current.user_id
 }
