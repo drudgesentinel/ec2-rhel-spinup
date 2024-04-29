@@ -24,6 +24,6 @@ variable "instance_type" {
 }
 
 variable "keypair_name" {
-    type = string
-    description = "This is the name of the region-specific ec2 keypair for accessing your instance"
+  type        = string
+  description = "This is the name of the region-specific ec2 keypair for accessing your instance"
 }
