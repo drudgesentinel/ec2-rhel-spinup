@@ -1,7 +1,7 @@
 This repo is to allow for creation of EC2 resources to reproduce issues with the Gremlin agent.
 It was tested/created with `opentofu` but should also work with Terraform proper.
 
-It creates network configuration according to the docs:
+It creates network configuration according to these docs:
 
 https://www.gremlin.com/docs/getting-started-install-virtual-machine
 https://www.gremlin.com/docs/platform-integrations-webhooks

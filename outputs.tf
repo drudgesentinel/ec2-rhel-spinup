@@ -5,7 +5,7 @@ output "instance_id" {
 
 output "instance_public_ip" {
     description = "Public IP of created RHEL instance"
-    value = aws_instance.rhel_instance.id
+    value = aws_instance.rhel_instance.public_ip
 }
 
 output "account_id" {
