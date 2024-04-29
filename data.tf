@@ -12,7 +12,5 @@ data "aws_ami" "redhat-linux" {
   }
 }
 
-
-
 # this is probably an apply time data source, which is not ideal
 data "aws_caller_identity" "current" {}
