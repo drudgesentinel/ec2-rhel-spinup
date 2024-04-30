@@ -6,8 +6,10 @@ It creates network configuration according to these docs:
 https://www.gremlin.com/docs/getting-started-install-virtual-machine
 https://www.gremlin.com/docs/platform-integrations-webhooks
 
-If you choose RHEL 8, it will install extra kernel modules required for gremlin to function.
-DNF is very slow, so completion of the bootstrap script can take a long time after the instance itself is created.
+If you choose RHEL 8, it will install extra kernel modules required for gremlin to function, otherwise it installs the listed RPM requirements from the linked docs.
+
+`dnf` is very slow, so completion of the bootstrap script can take a long time after the instance itself is created.
+I have configured the user data to print to the system log, you can view results at `/var/log/user-data.log`
 
 The following variables should be provided when creating resources using this repo:
 
