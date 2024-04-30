@@ -6,14 +6,23 @@ It creates network configuration according to these docs:
 https://www.gremlin.com/docs/getting-started-install-virtual-machine
 https://www.gremlin.com/docs/platform-integrations-webhooks
 
-The following values should be provided when creating resources using this repo:
+If you choose RHEL 8, it will install extra kernel modules required for gremlin to function.
+DNF is very slow, so completion of the bootstrap script can take a long time after the instance itself is created.
 
-"ticket_num" 
+The following variables should be provided when creating resources using this repo:
+
+"ticket_num" (to tie resources to a specific ticket)
 
 "aws_region" 
 
-"rhel_version" (from 7-9. Eventually will add other operating systems as I get a feel for what is practical)
+"rhel_version" (from 7-9. Specific point releases don't work. Eventually will add other operating systems as I get a feel for what is practical)
 
 "instance_type" (optional, defaults to t3a.medium)
 
 "keypair_name" (ssh keypair for accessing the created instance)
+
+Potential TODO items:
+
+Create a way to find more specific point releases and spin them up (at present, this grabs latest major version. Amazon doesn't own older versions so it might take some work to do this)
+
+Add distributions (probably best accomplished by packaging up network/data sources as modules, and then using main to spin up the desired specific distro.)
