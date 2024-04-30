@@ -28,3 +28,5 @@ Potential TODO items:
 Create a way to find more specific point releases and spin them up (at present, this grabs latest major version. Amazon doesn't own older versions so it might take some work to do this)
 
 Add distributions (probably best accomplished by packaging up network/data sources as modules, and then using main to spin up the desired specific distro.)
+
+Add a way to provide a config file directly for Gremlin so that it's not necessary to manually move it after provisioning an instance
