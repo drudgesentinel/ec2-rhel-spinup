@@ -8,6 +8,11 @@ variable "aws_region" {
   default = "us-west-2"
 }
 
+variable "os" {
+  type = string
+  default = "rhel"
+}
+
 variable "rhel_version" {
   type        = string
   description = "The RHEL major version (7-9) to install."

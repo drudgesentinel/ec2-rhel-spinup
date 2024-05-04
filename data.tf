@@ -12,5 +12,18 @@ data "aws_ami" "redhat-linux" {
   }
 }
 
+data "aws_ami" "suse-linux" {
+  most_recent = true
+  owners      = ["013907871322"] # Amazon
+  filter {
+    name   = "name"
+    values = ["suse-sles-${var.suse_version}.*-hvm-ssd-x86_64"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
 # this is probably an apply time data source, which is not ideal
 data "aws_caller_identity" "current" {}
