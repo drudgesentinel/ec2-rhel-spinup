@@ -17,7 +17,7 @@ data "aws_ami" "suse-linux" {
   owners      = ["013907871322"] # Amazon
   filter {
     name   = "name"
-    values = ["suse-sles-${var.suse_version}.*-hvm-ssd-x86_64"]
+    values = ["suse-sles-${var.suse_version}*-hvm-ssd-x86_64"]
   }
   filter {
     name   = "virtualization-type"
