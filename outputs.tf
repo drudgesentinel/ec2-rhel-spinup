@@ -1,11 +1,12 @@
 output "instance_id" {
-    description = "ID of created RHEL instance"
-    value = aws_instance.rhel_instance[0].id
+  description = "ID of created RHEL instance"
+  # this'll need to be fixed if I add a third OS
+  value       = var.os == "rhel" ? aws_instance.rhel_instance[0].id : aws_instance.suse_instance[0].id
 }
 
 output "instance_public_ip" {
     description = "Public IP of created RHEL instance"
-    value = aws_instance.rhel_instance[0].public_ip
+    value = var.os == "rhel" ? aws_instance.rhel_instance[0].public_ip : aws_instance.suse_instance[0].public_ip
 }
 
 output "account_id" {

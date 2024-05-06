@@ -11,13 +11,19 @@ If you choose RHEL 8, it will install extra kernel modules required for gremlin 
 `dnf` is very slow, so completion of the bootstrap script can take a long time after the instance itself is created.
 I have configured the user data to print to the system log, you can view results at `/var/log/user-data.log`
 
-The following variables should be provided when creating resources using this repo:
+You'll need to supply the os and keypair at minimum:
+`terraform apply -var="os=suse" -var="keypair=my-keypair"`
 
-"ticket_num" (to tie resources to a specific ticket)
+Usable variables are:
+
+"ticket_num" (to tie resources to a specific ticket/reference/use case)
 
 "aws_region" 
 
-"rhel_version" (from 7-9. Specific point releases don't work. Eventually will add other operating systems as I get a feel for what is practical)
+"os" (needs to be either suse or rhel)
+
+"rhel_version" (from 7-9. Specific point releases don't work.)
+"suse_version" (12 or 15)
 
 "instance_type" (optional, defaults to t3a.medium)
 
