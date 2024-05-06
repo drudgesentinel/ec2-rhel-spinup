@@ -32,7 +32,9 @@ resource "aws_instance" "suse_instance" {
   ami = data.aws_ami.suse-linux.id
   instance_type = var.instance_type
   key_name = var.keypair_name
-
+  user_data = templatefile("suse_rpm_bootstrap.sh", {
+    rhel_version = var.rhel_version
+  })
   tags = {
     created_by = data.aws_caller_identity.current.arn
     ticket_num = var.ticket_num
