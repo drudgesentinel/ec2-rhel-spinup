@@ -23,6 +23,17 @@ variable "rhel_version" {
   }
 }
 
+variable "suse_version" {
+  type = string
+  description = "The SUSE major version to install (12 or 15)."
+
+  validation {
+    condition = var.suse_version == "12" || var.suse_version == "15"
+    error_message = "The SUSE version should be either 12 or 15"
+  }
+
+}
+
 variable "instance_type" {
   type    = string
   default = "t3a.medium"
