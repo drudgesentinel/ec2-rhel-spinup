@@ -24,6 +24,7 @@ resource "aws_instance" "rhel_instance" {
   tags = {
     created_by = data.aws_caller_identity.current.arn
     ticket_num = var.ticket_num
+    Name = "rhel-repro-${count.index}"
   }
 }
 
@@ -33,10 +34,11 @@ resource "aws_instance" "suse_instance" {
   instance_type = var.instance_type
   key_name      = var.keypair_name
   user_data = templatefile("suse_rpm_bootstrap.sh", {
-    rhel_version = var.rhel_version
+    suse_version = var.suse_version
   })
   tags = {
     created_by = data.aws_caller_identity.current.arn
     ticket_num = var.ticket_num
+    Name = "suse-repro-${count.index}"
   }
 }
