@@ -24,7 +24,7 @@ resource "aws_instance" "rhel_instance" {
   tags = {
     created_by = data.aws_caller_identity.current.arn
     ticket_num = var.ticket_num
-    Name = "rhel-repro-${count.index}"
+    Name = "rhel-repro-${count.index + 1}"
   }
 }
 
@@ -39,6 +39,6 @@ resource "aws_instance" "suse_instance" {
   tags = {
     created_by = data.aws_caller_identity.current.arn
     ticket_num = var.ticket_num
-    Name = "suse-repro-${count.index}"
+    Name = "suse-repro-${count.index + 1}"
   }
 }
