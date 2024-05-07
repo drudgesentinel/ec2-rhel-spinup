@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "rhel_instance" {
-  count         = var.os == "rhel" ? 1 : 0
+  count         = var.os == "rhel" ? var.number_of_instances : 0
   ami           = data.aws_ami.redhat-linux.id
   instance_type = var.instance_type
   key_name      = var.keypair_name
@@ -28,7 +28,7 @@ resource "aws_instance" "rhel_instance" {
 }
 
 resource "aws_instance" "suse_instance" {
-  count         = var.os == "suse" ? 1 : 0
+  count         = var.os == "suse" ? var.number_of_instances : 0
   ami           = data.aws_ami.suse-linux.id
   instance_type = var.instance_type
   key_name      = var.keypair_name

@@ -23,10 +23,20 @@ variable "rhel_version" {
   }
 }
 
+variable "number_of_instances" {
+  type = number
+  description = "The number of instances to deploy"
+  default = 1
+  validation {
+    condition = var.number_of_instances > 0
+    error_message = "The number of instances needs to be greater than zero"
+  }
+}
+
 variable "suse_version" {
   type        = string
   description = "The SUSE major version to install (12 or 15)."
-  default     = 15
+  default     = "15"
   validation {
     condition     = var.suse_version == "12" || var.suse_version == "15"
     error_message = "The SUSE version should be either 12 or 15"

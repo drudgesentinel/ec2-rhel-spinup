@@ -20,6 +20,8 @@ Usable variables are:
 
 "aws_region" 
 
+"number_of_instances" (optional, defaults to 1)
+
 "os" (needs to be either suse or rhel)
 
 "rhel_version" (from 7-9. Specific point releases don't work.)
