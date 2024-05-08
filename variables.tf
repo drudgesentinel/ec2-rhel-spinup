@@ -11,6 +11,8 @@ variable "aws_region" {
 
 variable "os" {
   type = string
+  default = "rhel"
+  description = "The operating system for your instance. Should be either 'rhel' or 'suse'"
 }
 
 variable "rhel_version" {
@@ -51,5 +53,6 @@ variable "instance_type" {
 
 variable "keypair_name" {
   type        = string
+  default = "gremlin-support-keypair"
   description = "This is the name of the region-specific ec2 keypair for accessing your instance"
 }
