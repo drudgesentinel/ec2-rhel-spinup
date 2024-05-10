@@ -10,8 +10,8 @@ variable "aws_region" {
 }
 
 variable "os" {
-  type = string
-  default = "rhel"
+  type        = string
+  default     = "rhel"
   description = "The operating system for your instance. Should be either 'rhel' or 'suse'"
 }
 
@@ -26,11 +26,11 @@ variable "rhel_version" {
 }
 
 variable "number_of_instances" {
-  type = number
+  type        = number
   description = "The number of instances to deploy"
-  default = 1
+  default     = 1
   validation {
-    condition = var.number_of_instances > 0
+    condition     = var.number_of_instances > 0
     error_message = "The number of instances needs to be greater than zero"
   }
 }
@@ -53,6 +53,6 @@ variable "instance_type" {
 
 variable "keypair_name" {
   type        = string
-  default = "gremlin-support-keypair"
+  default     = "gremlin-support-keypair"
   description = "This is the name of the region-specific ec2 keypair for accessing your instance"
 }
