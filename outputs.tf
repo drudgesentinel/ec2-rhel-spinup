@@ -20,3 +20,7 @@ output "caller_arn" {
 output "caller_user" {
   value = data.aws_caller_identity.current.user_id
 }
+
+output "login_string" {
+  value = "ssh -i ${var.keypair_name} root@${var.instance_public_ip}"
+}
