@@ -38,3 +38,9 @@ Create a way to find more specific point releases and spin them up (at present, 
 Add distributions (probably best accomplished by packaging up network/data sources as modules, and then using main to spin up the desired specific distro.)
 
 Add a way to provide a config file directly for Gremlin so that it's not necessary to manually move it after provisioning an instance
+
+If you would like to configure your s3 backend (e.g., terraform init -backend-config="s3_backend.conf") , add a s3_backend.conf file with the following values:
+    bucket = "s3-bucket-name"
+    key    = "path-to-state"
+    region = "us-east-1"
+
