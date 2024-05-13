@@ -4,6 +4,11 @@ variable "ticket_num" {
   default     = ""
 }
 
+variable "state_storage_s3_bucket" {
+  type = string
+  description = "S3 bucket for state storage"
+}
+
 variable "aws_region" {
   type    = string
   default = "us-west-2"
@@ -53,6 +58,5 @@ variable "instance_type" {
 
 variable "keypair_name" {
   type        = string
-  default     = "gremlin-support-keypair"
   description = "This is the name of the region-specific ec2 keypair for accessing your instance"
 }
