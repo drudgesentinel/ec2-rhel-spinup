@@ -5,8 +5,13 @@ variable "ticket_num" {
 }
 
 variable "state_storage_s3_bucket" {
-  type = string
+  type        = string
   description = "S3 bucket for state storage"
+}
+
+variable "s3_state_path" {
+  type        = string
+  description = "The desired path to the statefile in the configured s3 bucket"
 }
 
 variable "aws_region" {
