@@ -22,5 +22,5 @@ output "caller_user" {
 }
 
 output "login_string" {
-  value = "ssh -i ${var.keypair_name} root@${var.os == "rhel" ? aws_instance.rhel_instance[0].public_ip : aws_instance.suse_instance[0].public_ip}"
+  value = "ssh -i ${var.keypair_name}.pem ec2-user@${var.os == "rhel" ? aws_instance.rhel_instance[0].public_ip : aws_instance.suse_instance[0].public_ip}"
 }
