@@ -28,6 +28,17 @@ resource "aws_instance" "rhel_instance" {
     ticket_num = var.ticket_num
     Name       = "rhel-repro-${count.index + 1}"
   }
+  provisioner "file" {
+    source = var.gremlin_config_path
+    destination = "/etc/gremlin"
+
+    connection {
+      type = "ssh"
+      user = "ec2-user"
+      private_key = var.keypair_path
+      host = aws_instance.rhel_instance[0].public_ip
+    }
+  }
 }
 
 resource "aws_instance" "suse_instance" {
