@@ -14,6 +14,12 @@ I have configured the user data to print to the system log, you can view results
 You'll need to supply the os and keypair at minimum:
 `terraform apply -var="os=suse" -var="keypair=my-keypair"`
 
+You should specify your .pem file and your local config in order to configure the remote instance. For example:
+
+```
+$ terraform apply -var="gremlin_config_path=~/gremlin-config/gremlin-support/config.yaml" -var="keypair_path=~/creds/gremlin-support-keypair.pem"
+```
+
 Usable variables are:
 
 "ticket_num" (to tie resources to a specific ticket/reference/use case)
@@ -36,8 +42,6 @@ Potential TODO items:
 Create a way to find more specific point releases and spin them up (at present, this grabs latest major version. Amazon doesn't own older versions so it might take some work to do this)
 
 Add distributions (probably best accomplished by packaging up network/data sources as modules, and then using main to spin up the desired specific distro.)
-
-Add a way to provide a config file directly for Gremlin so that it's not necessary to manually move it after provisioning an instance
 
 If you would like to configure your s3 backend (e.g., terraform init -backend-config="s3_backend.conf") , add a s3_backend.conf file with the following values:
     bucket = "s3-bucket-name"
