@@ -11,10 +11,7 @@ If you choose RHEL 8, it will install extra kernel modules required for gremlin 
 `dnf` is very slow, so completion of the bootstrap script can take a long time after the instance itself is created.
 I have configured the user data to print to the system log, you can view results at `/var/log/user-data.log`
 
-You'll need to supply the os and keypair at minimum:
-`terraform apply -var="os=suse" -var="keypair=my-keypair"`
-
-You should specify your .pem file and your local config in order to configure the remote instance. For example:
+You will need to specify your .pem file and your local config in order to configure the remote instance. For example:
 
 ```
 $ terraform apply -var="gremlin_config_path=~/gremlin-config/gremlin-support/config.yaml" -var="keypair_path=~/creds/gremlin-support-keypair.pem"
