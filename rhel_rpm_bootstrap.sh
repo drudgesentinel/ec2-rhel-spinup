@@ -24,7 +24,7 @@ sleep 20
 
 # Install Gremlin
 yum install -y gremlin gremlind
-
+modprobe sch_netem
 
 
     # RHEL 8 prep per: https://support-site.gremlin.com/support/solutions/articles/151000045247-unhealthy-red-hat-8
