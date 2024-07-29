@@ -9,8 +9,8 @@ yum install -y iproute-tc
 # Add the Gremlin repo
 curl https://rpm.gremlin.com/gremlin.repo -o /etc/yum.repos.d/gremlin.repo
 
-# Check for RHEL 8 and act accordingly
-if [ "${rhel_version}" -eq "8" ]; then
+# Check for RHEL 8 or RHEL 9 and act accordingly
+if [ "${rhel_version}" -eq "8" || "${rhel_version}" -eq "9" ]; then
     echo "RHEL 8 detected. Installing additional requirements"
     yum install iproute-tc -y 
     yum install kernel-modules-extra -y 
