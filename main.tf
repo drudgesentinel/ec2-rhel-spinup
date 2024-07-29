@@ -43,6 +43,8 @@ resource "aws_instance" "rhel_instance" {
 
   provisioner "remote-exec" {
     inline = [
+      "sudo chown root /home/ec2-user/config.yaml",
+      "sudo mkdir /etc/gremlin",
       "sudo cp /home/ec2-user/config.yaml /etc/gremlin"
     ]
   }
