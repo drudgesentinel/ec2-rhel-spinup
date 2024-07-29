@@ -28,16 +28,23 @@ resource "aws_instance" "rhel_instance" {
     ticket_num = var.ticket_num
     Name       = "rhel-repro-${count.index + 1}"
   }
-  provisioner "file" {
-    source = var.gremlin_config_path
-    destination = "/etc/gremlin"
-
-    connection {
+  # rare mitchell L: https://github.com/hashicorp/packer/issues/1551#issuecomment-59131451
+  connection {
       type = "ssh"
       user = "ec2-user"
-      private_key = var.keypair_path
+      private_key = file(var.keypair_path)
       host = aws_instance.rhel_instance[0].public_ip
     }
+
+  provisioner "file" {
+    source = var.gremlin_config_path
+    destination = "/home/ec2-user"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo cp config.yaml /etc/gremlin"
+    ]
   }
 }
 
