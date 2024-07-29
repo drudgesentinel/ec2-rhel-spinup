@@ -55,3 +55,15 @@ variable "keypair_name" {
   type        = string
   description = "This is the name of the region-specific ec2 keypair for accessing your instance"
 }
+
+variable "keypair_path" {
+  type = string
+  description = "The path to your keypair if using a file provisioner"
+  default = ""
+}
+
+variable "gremlin_config_path" {
+  type = string
+  description = "Path on your local machine to your config.yaml for the gremlin agent"
+  default = ""
+}
