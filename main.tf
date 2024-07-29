@@ -38,12 +38,12 @@ resource "aws_instance" "rhel_instance" {
 
   provisioner "file" {
     source = var.gremlin_config_path
-    destination = "/home/ec2-user"
+    destination = "/home/ec2-user/config.yaml"
   }
 
   provisioner "remote-exec" {
     inline = [
-      "sudo cp config.yaml /etc/gremlin"
+      "sudo cp /home/ec2-user/config.yaml /etc/gremlin"
     ]
   }
 }
