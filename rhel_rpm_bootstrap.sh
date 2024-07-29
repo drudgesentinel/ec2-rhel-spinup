@@ -4,8 +4,7 @@
 #Send all output of userdata script to /var/log/user-data.log and the console
 exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 
-#DBUG
-echo "The rhel version passed to this script was: ${rhel_version}"
+yum upgrade -y
 
 # Install dependencies
 yum install -y iproute-tc vim yum-utils
@@ -20,6 +19,8 @@ if [ "${rhel_version}" -eq "8" ] || [ "${rhel_version}" -eq "9" ]; then
     yum install kernel-modules-extra-$(uname -r) -y
     modprobe sch_netem
 fi
+
+sleep 20
 
 # Install Gremlin
 yum install -y gremlin gremlind
